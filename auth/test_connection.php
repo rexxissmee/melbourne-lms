@@ -3,7 +3,7 @@
 $conn = new mysqli("localhost", "root", "", "lms_melbourne");
 
 if ($conn->connect_error) {
-    die("❌ Kết nối thất bại: " . $conn->connect_error);
+    die("❌ Connection failed: " . $conn->connect_error);
 }
-echo "✅ Kết nối thành công!";
+echo "✅ Connection successful!";
 ?>
