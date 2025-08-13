@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
+        
         <a class="navbar-brand" href="../student/dashboard.php">
-            <i class="fas fa-graduation-cap"></i> University LMS
+            <i class="fas fa-graduation-cap"></i> Melbourne LMS
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

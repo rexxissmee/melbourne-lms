@@ -1,28 +1,34 @@
+<?php 
+$current = basename($_SERVER['PHP_SELF']);
+$isActive = function(array $files) use ($current) {
+    return in_array($current, $files, true) ? ' active' : '';
+};
+?>
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="../student/dashboard.php">
+                <a class="nav-link<?php echo $isActive(['dashboard.php']); ?>" href="../student/dashboard.php">
                     <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../student/courses.php">
+                <a class="nav-link<?php echo $isActive(['courses.php','course_view.php']); ?>" href="../student/courses.php">
                     <i class="fas fa-book"></i> My Courses
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../student/assignments.php">
+                <a class="nav-link<?php echo $isActive(['assignments.php']); ?>" href="../student/assignments.php">
                     <i class="fas fa-tasks"></i> Assignments
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../student/quizzes.php">
+                <a class="nav-link<?php echo $isActive(['quizzes.php']); ?>" href="../student/quizzes.php">
                     <i class="fas fa-question-circle"></i> Quizzes
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../student/grades.php">
+                <a class="nav-link<?php echo $isActive(['grades.php']); ?>" href="../student/grades.php">
                     <i class="fas fa-chart-line"></i> Grades
                 </a>
             </li>

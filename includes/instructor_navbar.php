@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-success">
     <div class="container-fluid">
+        
         <a class="navbar-brand" href="../instructor/dashboard.php">
-            <i class="fas fa-chalkboard-teacher"></i> University LMS - Instructor
+            <i class="fas fa-chalkboard-teacher"></i> Melbourne LMS - Instructor
         </a>
         
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

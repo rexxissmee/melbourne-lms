@@ -1,33 +1,39 @@
+<?php 
+$current = basename($_SERVER['PHP_SELF']);
+$isActive = function(array $files) use ($current) {
+    return in_array($current, $files, true) ? ' active' : '';
+};
+?>
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="../instructor/dashboard.php">
+                <a class="nav-link<?php echo $isActive(['dashboard.php']); ?>" href="../instructor/dashboard.php">
                     <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../instructor/courses.php">
+                <a class="nav-link<?php echo $isActive(['courses.php','course_view.php','course_edit.php','course_create.php']); ?>" href="../instructor/courses.php">
                     <i class="fas fa-book"></i> My Courses
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../instructor/assignments.php">
+                <a class="nav-link<?php echo $isActive(['assignments.php']); ?>" href="../instructor/assignments.php">
                     <i class="fas fa-tasks"></i> Assignments
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../instructor/quizzes.php">
+                <a class="nav-link<?php echo $isActive(['quizzes.php']); ?>" href="../instructor/quizzes.php">
                     <i class="fas fa-question-circle"></i> Quizzes
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../instructor/grading.php">
+                <a class="nav-link<?php echo $isActive(['grading.php']); ?>" href="../instructor/grading.php">
                     <i class="fas fa-clipboard-check"></i> Grading
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../instructor/students.php">
+                <a class="nav-link<?php echo $isActive(['students.php']); ?>" href="../instructor/students.php">
                     <i class="fas fa-user-graduate"></i> Students
                 </a>
             </li>
@@ -38,12 +44,12 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="../instructor/materials.php">
+                <a class="nav-link<?php echo $isActive(['materials.php']); ?>" href="../instructor/materials.php">
                     <i class="fas fa-file-alt"></i> Course Materials
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="../forum/manage.php">
+                <a class="nav-link<?php echo $isActive(['forum_manage.php']); ?>" href="../instructor/forum_manage.php">
                     <i class="fas fa-comments"></i> Forum Management
                 </a>
             </li>
@@ -60,7 +66,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="../instructor/reports.php">
-                    <i class="fas fa-file-chart"></i> Reports
+                    <i class="fas fa-file-alt"></i> Reports
                 </a>
             </li>
         </ul>
