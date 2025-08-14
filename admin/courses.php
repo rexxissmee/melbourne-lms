@@ -17,7 +17,11 @@ if (isset($_POST['delete_course'])) {
     exit();
 }
 
-// Update status
+// Course status:
+// - active: course is open to students (visible, enrollable, accessible)
+// - inactive: course is temporarily hidden from students (no enroll/access), staff can manage
+// - archived: course is finished/locked for reference (no edits or new enrollments)
+// Persist as plain text in column `status` with values: 'active' | 'inactive' | 'archived'
 if (isset($_POST['update_status'])) {
     $cid = (int)$_POST['course_id'];
     $status = in_array($_POST['status'], ['active', 'inactive', 'archived'], true) ? $_POST['status'] : 'active';
@@ -80,9 +84,12 @@ $courses = $coursesStmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <td><?php echo htmlspecialchars($c['first_name'] . ' ' . $c['last_name']); ?></td>
                                                 <td><?php echo $c['student_count']; ?></td>
                                                 <td>
+                                                    <?php // Render status selector; semantics documented above 
+                                                    ?>
                                                     <form method="post">
                                                         <input type="hidden" name="update_status" value="1">
                                                         <input type="hidden" name="course_id" value="<?php echo $c['id']; ?>">
+                                                        <!-- Options: active (open), inactive (hidden/no access), archived (locked/reference) -->
                                                         <select name="status" class="form-select form-select-sm" onchange="this.form.submit()">
                                                             <?php foreach (['active' => 'Active', 'inactive' => 'Inactive', 'archived' => 'Archived'] as $k => $label): ?>
                                                                 <option value="<?php echo $k; ?>" <?php echo $c['status'] === $k ? 'selected' : ''; ?>><?php echo $label; ?></option>
