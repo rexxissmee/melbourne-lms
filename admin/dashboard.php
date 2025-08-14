@@ -75,6 +75,7 @@ $monthly_registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -84,13 +85,14 @@ $monthly_registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="../assets/css/dashboard.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
     <?php include '../includes/admin_navbar.php'; ?>
-    
+
     <div class="container-fluid">
         <div class="row">
             <?php include '../includes/admin_sidebar.php'; ?>
-            
+
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">
@@ -289,22 +291,36 @@ $monthly_registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <?php foreach ($recent_activities as $activity): ?>
                                         <div class="timeline-item">
                                             <div class="timeline-marker 
-                                                <?php 
-                                                switch($activity['type']) {
-                                                    case 'user_registered': echo 'bg-success'; break;
-                                                    case 'course_created': echo 'bg-primary'; break;
-                                                    case 'enrollment': echo 'bg-info'; break;
-                                                    default: echo 'bg-secondary';
+                                                <?php
+                                                switch ($activity['type']) {
+                                                    case 'user_registered':
+                                                        echo 'bg-success';
+                                                        break;
+                                                    case 'course_created':
+                                                        echo 'bg-primary';
+                                                        break;
+                                                    case 'enrollment':
+                                                        echo 'bg-info';
+                                                        break;
+                                                    default:
+                                                        echo 'bg-secondary';
                                                 }
                                                 ?>"></div>
                                             <div class="timeline-content">
                                                 <h6 class="mb-1">
-                                                    <?php 
-                                                    switch($activity['type']) {
-                                                        case 'user_registered': echo 'New User Registration'; break;
-                                                        case 'course_created': echo 'Course Created'; break;
-                                                        case 'enrollment': echo 'New Enrollment'; break;
-                                                        default: echo 'Activity';
+                                                    <?php
+                                                    switch ($activity['type']) {
+                                                        case 'user_registered':
+                                                            echo 'New User Registration';
+                                                            break;
+                                                        case 'course_created':
+                                                            echo 'Course Created';
+                                                            break;
+                                                        case 'enrollment':
+                                                            echo 'New Enrollment';
+                                                            break;
+                                                        default:
+                                                            echo 'Activity';
                                                     }
                                                     ?>
                                                 </h6>
@@ -330,8 +346,7 @@ $monthly_registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             type: 'bar',
             data: {
                 labels: [
-                    <?php foreach ($course_enrollments as $course): ?>
-                        '<?php echo addslashes($course['title']); ?>',
+                    <?php foreach ($course_enrollments as $course): ?> '<?php echo addslashes($course['title']); ?>',
                     <?php endforeach; ?>
                 ],
                 datasets: [{
@@ -362,8 +377,7 @@ $monthly_registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
             type: 'line',
             data: {
                 labels: [
-                    <?php foreach ($monthly_registrations as $reg): ?>
-                        '<?php echo $reg['month']; ?>',
+                    <?php foreach ($monthly_registrations as $reg): ?> '<?php echo $reg['month']; ?>',
                     <?php endforeach; ?>
                 ],
                 datasets: [{
@@ -389,4 +403,5 @@ $monthly_registrations = $stmt->fetchAll(PDO::FETCH_ASSOC);
         });
     </script>
 </body>
+
 </html>

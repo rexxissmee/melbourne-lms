@@ -46,9 +46,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$title = sanitizeInput($_POST['title'] ?? '');
 	$content = trim($_POST['content'] ?? '');
 
-	if ($categoryId <= 0) { $errors[] = 'Please select a category.'; }
-	if ($title === '') { $errors[] = 'Title is required.'; }
-	if ($content === '') { $errors[] = 'Content is required.'; }
+	if ($categoryId <= 0) {
+		$errors[] = 'Please select a category.';
+	}
+	if ($title === '') {
+		$errors[] = 'Title is required.';
+	}
+	if ($content === '') {
+		$errors[] = 'Content is required.';
+	}
 
 	// Validate category belongs to this course
 	if (empty($errors)) {
@@ -82,6 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,8 +97,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 	<link href="../assets/css/dashboard.css" rel="stylesheet">
 </head>
+
 <body>
-	<?php 
+	<?php
 	if ($role === 'student') {
 		include '../includes/student_navbar.php';
 	} elseif ($role === 'instructor') {
@@ -100,7 +108,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	?>
 	<div class="container-fluid">
 		<div class="row">
-			<?php 
+			<?php
 			if ($role === 'student') {
 				include '../includes/student_sidebar.php';
 			} elseif ($role === 'instructor') {
@@ -150,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 								</div>
 								<div class="mb-3">
 									<label class="form-label">Content</label>
-									<textarea name="content" rows="6" class="form-control" required><?php echo htmlspecialchars($_POST['content'] ?? ''); ?></textarea>
+									<textarea name="content" rows="6" class="form-control" placeholder="You can use [b]bold[/b], [i]italic[/i], [u]underline[/u]" required><?php echo htmlspecialchars($_POST['content'] ?? ''); ?></textarea>
 								</div>
 								<div>
 									<a href="index.php?course_id=<?php echo $courseId; ?>" class="btn btn-outline-secondary">Cancel</a>
@@ -166,6 +174,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
-
-

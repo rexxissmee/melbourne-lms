@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        
+
         <a class="navbar-brand" href="../admin/dashboard.php">
             <i class="fas fa-user-shield"></i> Melbourne LMS - Admin
         </a>
-        
+
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
@@ -37,8 +37,8 @@
                     </a>
                 </li>
             </ul>
-            
-            <ul class="navbar-nav">
+
+            <ul class="navbar-nav ms-lg-auto">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                         <i class="fas fa-user-shield"></i> Administrator
@@ -46,7 +46,9 @@
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="../profile.php"><i class="fas fa-user-edit"></i> Profile</a></li>
                         <li><a class="dropdown-item" href="../admin/system_logs.php"><i class="fas fa-list"></i> System Logs</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
                         <li><a class="dropdown-item" href="../auth/logout.php"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                     </ul>
                 </li>

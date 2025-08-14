@@ -45,7 +45,9 @@ if (!$hasAccess) {
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$content = trim($_POST['content'] ?? '');
-	if ($content === '') { $errors[] = 'Content is required.'; }
+	if ($content === '') {
+		$errors[] = 'Content is required.';
+	}
 	if (empty($errors)) {
 		$ins = $db->prepare('INSERT INTO forum_posts (topic_id, user_id, content, created_at) VALUES (?, ?, ?, NOW())');
 		$ins->execute([$topicId, $userId, $content]);
@@ -64,6 +66,7 @@ $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,8 +75,9 @@ $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 	<link href="../assets/css/dashboard.css" rel="stylesheet">
 </head>
+
 <body>
-	<?php 
+	<?php
 	if ($role === 'student') {
 		include '../includes/student_navbar.php';
 	} elseif ($role === 'instructor') {
@@ -82,7 +86,7 @@ $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
 	?>
 	<div class="container-fluid">
 		<div class="row">
-			<?php 
+			<?php
 			if ($role === 'student') {
 				include '../includes/student_sidebar.php';
 			} elseif ($role === 'instructor') {
@@ -106,7 +110,7 @@ $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
 									<strong><?php echo htmlspecialchars($post['first_name'] . ' ' . $post['last_name']); ?></strong>
 									<small class="text-muted"><?php echo formatDate($post['created_at']); ?></small>
 								</div>
-								<div><?php echo nl2br(htmlspecialchars($post['content'])); ?></div>
+								<div><?php echo renderForumText($post['content']); ?></div>
 								<hr>
 							</div>
 						<?php endforeach; ?>
@@ -127,7 +131,7 @@ $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
 						<?php endif; ?>
 						<form method="post">
 							<div class="mb-3">
-								<textarea name="content" rows="4" class="form-control" required></textarea>
+								<textarea name="content" rows="4" class="form-control" placeholder="You can use [b]bold[/b], [i]italic[/i], [u]underline[/u]" required></textarea>
 							</div>
 							<button class="btn btn-primary"><i class="fas fa-paper-plane"></i> Post Reply</button>
 						</form>
@@ -139,6 +143,5 @@ $posts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
-
-

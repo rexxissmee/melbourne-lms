@@ -1,6 +1,6 @@
-<?php 
+<?php
 $current = basename($_SERVER['PHP_SELF']);
-$isActive = function(array $files) use ($current) {
+$isActive = function (array $files) use ($current) {
     return in_array($current, $files, true) ? ' active' : '';
 };
 ?>
@@ -19,7 +19,7 @@ $isActive = function(array $files) use ($current) {
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link<?php echo $isActive(['users.php','students.php','instructors.php']); ?>" href="../admin/users.php">
+                <a class="nav-link<?php echo $isActive(['users.php']); ?>" href="../admin/users.php">
                     <i class="fas fa-users"></i> All Users
                 </a>
             </li>
@@ -40,7 +40,7 @@ $isActive = function(array $files) use ($current) {
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link<?php echo $isActive(['courses.php','enrollments.php']); ?>" href="../admin/courses.php">
+                <a class="nav-link<?php echo $isActive(['courses.php', 'course_view.php']); ?>" href="../admin/courses.php">
                     <i class="fas fa-book"></i> All Courses
                 </a>
             </li>
@@ -56,7 +56,7 @@ $isActive = function(array $files) use ($current) {
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link<?php echo $isActive(['analytics.php','reports.php']); ?>" href="../admin/analytics.php">
+                <a class="nav-link<?php echo $isActive(['analytics.php', 'reports.php']); ?>" href="../admin/analytics.php">
                     <i class="fas fa-chart-bar"></i> Analytics
                 </a>
             </li>
@@ -66,7 +66,7 @@ $isActive = function(array $files) use ($current) {
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link<?php echo $isActive(['settings.php','system_logs.php']); ?>" href="../admin/settings.php">
+                <a class="nav-link<?php echo $isActive(['settings.php', 'system_logs.php']); ?>" href="../admin/settings.php">
                     <i class="fas fa-cog"></i> Settings
                 </a>
             </li>

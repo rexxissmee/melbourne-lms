@@ -141,7 +141,8 @@ if ($_POST) {
                                 Demo Accounts:<br>
                                 Admin: admin / 123456<br>
                                 Instructor: ins_smith / instructor123<br>
-                                Student: student1 / student123
+                                Student1: student1 / student123<br>
+                                Student2: student2 / student123
                             </small>
                         </div>
                     </div>
