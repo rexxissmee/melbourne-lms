@@ -2,7 +2,7 @@
 class Database
 {
     private $host = 'localhost';
-    private $db_name = 'lms_melbourne';
+    private $db_name = 'melbourne_lms';
     private $username = 'root';
     private $password = '';
     private $conn;
