@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2025 at 07:34 AM
+-- Generation Time: Aug 15, 2025 at 09:31 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -38,6 +38,13 @@ CREATE TABLE `assignments` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `assignments`
+--
+
+INSERT INTO `assignments` (`id`, `course_id`, `title`, `description`, `due_date`, `max_points`, `created_by`, `created_at`) VALUES
+(2, 3, 'Exercise 01', '1. Write a Python program to calculate the factorial of a given positive integer using a user-defined function.\r\n2. Write a Python program with a function that takes a list of numbers as input and returns the sum of all those numbers.\r\n3. Write a Python program to calculate the factorial of a given positive integer using recursion.\r\n4. Write a Python program with a function that takes a list of strings as input and returns a new list with all the strings converted to uppercase.\r\n5. Write a Python program that performs the following actions: \r\na) Create an empty list named numbers. \r\nb) Get input from the user for the number of elements they want to add to the list. \r\nc) Use a loop to prompt the user to enter each number and add it to the numbers list. \r\nd) Calculate and print the sum of all the numbers in the list. \r\ne) Print the largest and smallest numbers in the list.', '2025-08-15 23:59:00', 100.00, 2, '2025-08-15 06:42:30');
+
 -- --------------------------------------------------------
 
 --
@@ -56,6 +63,13 @@ CREATE TABLE `assignment_submissions` (
   `graded_by` int(11) DEFAULT NULL,
   `graded_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `assignment_submissions`
+--
+
+INSERT INTO `assignment_submissions` (`id`, `assignment_id`, `student_id`, `submission_text`, `file_path`, `submitted_at`, `grade`, `feedback`, `graded_by`, `graded_at`) VALUES
+(1, 2, 3, NULL, 'uploads/assignments/assign_2_stu_3_1755240357_09198cd3.docx', '2025-08-15 06:45:57', 100.00, 'Assignment demonstrates excellence in applying Python knowledge. All requirements are met perfectly, and the programs run smoothly.', 2, '2025-08-15 07:23:11');
 
 -- --------------------------------------------------------
 
@@ -465,13 +479,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `assignment_submissions`
 --
 ALTER TABLE `assignment_submissions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `courses`
